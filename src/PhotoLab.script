@@ -1,0 +1,170 @@
+Script started on Tue 28 Feb 2023 02:37:24 PM PST
+]0;zijieh4@bondi:hw4[zijieh4@bondi hw4]$ make
+gcc -Wall -std=c11 -c PhotoLab.c -o PhotoLab.o
+gcc -Wall -std=c11 -c FileIO.c -o FileIO.o
+gcc -Wall -std=c11 -c Image.c -o Image.o
+gcc -Wall -std=c11 -c Test.c -o Test.o
+gcc -Wall -std=c11 -c DIPs.c -o DIPs.o
+gcc -Wall -std=c11 -c Advanced.c -o Advanced.o
+ar rc libFilter.a Advanced.o DIPs.o
+ranlib libFilter.a
+gcc -Wall -lm PhotoLab.o FileIO.o Image.o Test.o -L. -lFilter -o PhotoLab
+gcc -Wall -std=c11 -DDEBUG -g -c PhotoLab.c -o PhotoLab_DEBUG.o
+gcc -Wall -std=c11 -DDEBUG -g -c FileIO.c -o FileIO_DEBUG.o
+gcc -Wall -std=c11 -DDEBUG -g -c Test.c -o Test_DEBUG.o
+gcc -Wall -lm PhotoLab_DEBUG.o FileIO_DEBUG.o Image.o Test_DEBUG.o -L. -lFilter -o PhotoLabTest
+]0;zijieh4@bondi:hw4[zijieh4@bondi hw4]$ ./PhotoLab
+
+----------------------------
+ 1: Load a PPM image
+ 2: Save an image in PPM and JPEG format
+ 3: Change a color image to Black & White
+ 4: Make a negative of an image
+ 5: Color filter an image
+ 6: Sketch the edge of an image
+ 7: Shuffle an image
+ 8: Flip an image horizontally
+ 9: Mirror an image horizontally
+10: Add border to an image
+11: Normalize an image
+12: Posterize an image
+13: Rotate and zoom an image
+14: Motion Blur
+15: Crop an image
+16: Resize an image
+17: Adjust the Brightness and Contrast of an image
+18: Add Watermark to an image
+19: Test all functions
+20: Exit
+Please make your choice: 19
+AutoTest finished successfully.
+
+----------------------------
+ 1: Load a PPM image
+ 2: Save an image in PPM and JPEG format
+ 3: Change a color image to Black & White
+ 4: Make a negative of an image
+ 5: Color filter an image
+ 6: Sketch the edge of an image
+ 7: Shuffle an image
+ 8: Flip an image horizontally
+ 9: Mirror an image horizontally
+10: Add border to an image
+11: Normalize an image
+12: Posterize an image
+13: Rotate and zoom an image
+14: Motion Blur
+15: Crop an image
+16: Resize an image
+17: Adjust the Brightness and Contrast of an image
+18: Add Watermark to an image
+19: Test all functions
+20: Exit
+Please make your choice: 20
+You exit the program.
+]0;zijieh4@bondi:hw4[zijieh4@bondi hw4]$ ./PhotoLab[22Gmake[Kcat PhotoLab.script[22Gls[Kmv typescript PhotoLab.script[22Gexit[Kmake clean[22Gvalgrind --leak-check=full ./PhotoLabTest
+==18390== Memcheck, a memory error detector
+==18390== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==18390== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==18390== Command: ./PhotoLabTest
+==18390== 
+Engineering.ppm was read successfully!
+bw.ppm was saved successfully. 
+bw.jpg was stored for viewing. 
+Black and White tested!
+
+Engineering.ppm was read successfully!
+negative.ppm was saved successfully. 
+negative.jpg was stored for viewing. 
+Negative tested!
+
+Engineering.ppm was read successfully!
+colorfilter.ppm was saved successfully. 
+colorfilter.jpg was stored for viewing. 
+Color Filter tested!
+
+Engineering.ppm was read successfully!
+edge.ppm was saved successfully. 
+edge.jpg was stored for viewing. 
+Edge Detection tested!
+
+Engineering.ppm was read successfully!
+shuffle.ppm was saved successfully. 
+shuffle.jpg was stored for viewing. 
+Shuffle tested!
+
+Engineering.ppm was read successfully!
+hflip.ppm was saved successfully. 
+hflip.jpg was stored for viewing. 
+HFlip tested!
+
+Engineering.ppm was read successfully!
+hmirror.ppm was saved successfully. 
+hmirror.jpg was stored for viewing. 
+HMirror tested!
+
+Engineering.ppm was read successfully!
+border.ppm was saved successfully. 
+border.jpg was stored for viewing. 
+Add Border tested!
+
+Engineering.ppm was read successfully!
+normalize.ppm was saved successfully. 
+normalize.jpg was stored for viewing. 
+Normalize tested!
+
+Engineering.ppm was read successfully!
+rotate.ppm was saved successfully. 
+rotate.jpg was stored for viewing. 
+Rotate tested!
+
+Engineering.ppm was read successfully!
+posterize.ppm was saved successfully. 
+posterize.jpg was stored for viewing. 
+Posterize tested!
+
+Engineering.ppm was read successfully!
+blur.ppm was saved successfully. 
+blur.jpg was stored for viewing. 
+MotionBlur tested!
+
+Engineering.ppm was read successfully!
+crop.ppm was saved successfully. 
+crop.jpg was stored for viewing. 
+Crop tested!
+
+Engineering.ppm was read successfully!
+smallresize.ppm was saved successfully. 
+smallresize.jpg was stored for viewing. 
+Engineering.ppm was read successfully!
+bigresize.ppm was saved successfully. 
+bigresize.jpg was stored for viewing. 
+Resize tested!
+
+Engineering.ppm was read successfully!
+brightnessandcontrast.ppm was saved successfully. 
+brightnessandcontrast.jpg was stored for viewing. 
+Brightness and Contrast tested!
+
+Engineering.ppm was read successfully!
+watermark_template.ppm was read successfully!
+watermark.ppm was saved successfully. 
+watermark.jpg was stored for viewing. 
+Watermark tested!
+
+AutoTest finished successfully.
+==18390== 
+==18390== HEAP SUMMARY:
+==18390==     in use at exit: 0 bytes in 0 blocks
+==18390==   total heap usage: 119 allocs, 119 frees, 8,233,952 bytes allocated
+==18390== 
+==18390== All heap blocks were freed -- no leaks are possible
+==18390== 
+==18390== For lists of detected and suppressed errors, rerun with: -s
+==18390== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+]0;zijieh4@bondi:hw4[zijieh4@bondi hw4]$ make clean
+rm -f *.o *.jpg PhotoLab PhotoLabTest bw.ppm negative.ppm colorfilter.ppm edge.ppm hflip.ppm shuffle.ppm hmirror.ppm border.ppm normalize.ppm rotate.ppm posterize.ppm blur.ppm crop.ppm brightnessandcontrast.ppm bigresize.ppm smallresize.ppm watermark.ppm  libFilter.a libFileIO.a
+]0;zijieh4@bondi:hw4[zijieh4@bondi hw4]$ exit
+exit
+
+Script done on Tue 28 Feb 2023 02:38:39 PM PST
